@@ -32,3 +32,8 @@ if not login:
 
         def __str__(self):
             return f"{self.name} - {self.plate_number}"
+
+
+idk why i said this
+
+lololol
