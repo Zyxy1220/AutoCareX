@@ -5,13 +5,25 @@ html,body {
     z-index: 0;
 }
 
-header{
+/*header{
     position: fixed;
-    background-color: black;
+    background-color: rgb(179, 50, 50);
     max-height: 100px;
     margin: 0;
     padding: 15px 15px;
-    width: 1500px;
+    width: 1550px;
+}*/
+
+.nav_container {
+    position: fixed;
+    height: 80px;
+    margin: 0;
+    width: 1550px;
+    display: flex; /* make icon and nav content beside themself */
+    align-items: center; /* make the icon and content up down same */
+    background-color: black;
+    padding: 0px 15px;
+    gap: 80px;
 }
 
 .menu-icon {
@@ -66,5 +78,46 @@ header{
 }
 
 button:hover {
-    background-color: rgb(52, 54, 54);
+    transform: scale(1.1);
+}
+
+.nav_content {
+    font-size: 20px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.nav_content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0px 30px;
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.nav_content a:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.nav_profile {
+    position: relative; /* make the block below the menu icon */
+}
+
+.profile {
+    margin-left: 450px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.profile_icon {
+    width: 45px;
+    height: 40px;
 }
