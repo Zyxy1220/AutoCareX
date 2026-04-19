@@ -7,10 +7,11 @@ html,body {
 
 /* ------------------ HOME ----------------------*/
 .nav_container {
-    position: fixed;
+    z-index: 999;
+    position: sticky;
     height: 80px;
     margin: 0;
-    width: 1550px;
+    max-width: 1525px;
     display: flex; /* make icon and nav content beside themself */
     align-items: center; /* make the icon and content up down same */
     background-color: black;
@@ -179,7 +180,6 @@ button:hover {
     width: 40px;               /* Long rectangular style like the image */
     height: 4px;
     background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
