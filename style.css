@@ -121,3 +121,19 @@ button:hover {
     width: 45px;
     height: 40px;
 }
+
+
+
+/* Login page */
+.login_container {
+  display: flex;
+  height: 100%;
+}
+
+/*.login_left {
+  
+}
+
+.login_right {
+ 
+}*/
