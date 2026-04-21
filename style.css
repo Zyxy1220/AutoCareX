@@ -67,13 +67,18 @@ header {
     position: relative; /* make the block below the menu icon */
 }
 
+.profile {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .profile_icon {
     width: 27px;
     height: 27px;
 }
 
-.profile_icon a:hover {
-    cursor: pointer;
+.profile:hover .profile_icon {
     transform: scale(1.1);
 }
 
