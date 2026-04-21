@@ -211,3 +211,17 @@ button:hover {
 .dot.active {
     background-color: #ffffff; /* Solid white when active */
 }
+
+/* Login page */
+.login_container {
+  display: flex;
+  height: 100%;
+}
+
+/*.login_left {
+  
+}
+
+.login_right {
+ 
+}*/
