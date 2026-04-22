@@ -1,6 +1,7 @@
+console.log("JS loaded!");
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
-const nextBtn = document.getElementById('nextBtn');
+const nextTrigger = document.querySelector('.next-trigger');
 
 let currentIndex = 0;
 let timer = null;
@@ -21,7 +22,7 @@ function startAutoPlay() {
     }, 5000);  // 5s to change picture and the index will += 1
 }
 
-nextBtn.addEventListener('click',() => {
+nextTrigger.addEventListener('click',() => {
     clearInterval(timer);
     gotoslide(currentIndex + 1);
     startAutoPlay();
