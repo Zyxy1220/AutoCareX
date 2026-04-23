@@ -29,3 +29,4 @@ nextTrigger.addEventListener('click',() => {
 })
 
 startAutoPlay();
+
