@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Verify OTP | AutoCareX{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+  <div>
+    <p class="eyebrow">Check your email</p>
+    <h1>Enter 6-digit OTP</h1>
+    <p class="muted">The code expires in 5 minutes.</p>
+  </div>
+
+  <form method="post" class="form-card">
+    {% csrf_token %}
+    <label for="otp">OTP code</label>
+    <input id="otp" type="text" name="otp" inputmode="numeric" maxlength="6" placeholder="123456" required>
+    <button type="submit">Verify and login</button>
+  </form>
+</section>
+{% endblock %}
