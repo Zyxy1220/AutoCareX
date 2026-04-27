@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Login | AutoCareX{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+  <div>
+    <p class="eyebrow">Passwordless login</p>
+    <h1>Login with email OTP</h1>
+    <p class="muted">For local testing, the OTP appears in your Django terminal.</p>
+  </div>
+
+  <form method="post" class="form-card">
+    {% csrf_token %}
+    <label for="email">Email address</label>
+    <input id="email" type="email" name="email" placeholder="you@example.com" required>
+    <button type="submit">Send OTP</button>
+  </form>
+</section>
+{% endblock %}
