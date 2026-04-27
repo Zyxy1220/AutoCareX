@@ -1,3 +1,5 @@
+/* Login page */
+
 * {
     margin: 0;
     padding: 0;
@@ -65,7 +67,6 @@
   font-weight: bold;         
   cursor: pointer;       
   margin-left: 250px;
-  margin-top: 60px;
   width: 35%;
   height: 55px;
   position: relative;
