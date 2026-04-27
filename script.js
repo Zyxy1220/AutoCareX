@@ -1,3 +1,7 @@
+const swup = new Swup({
+  containers: ['#swup']
+});
+
 console.log("JS loaded!");
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
