@@ -4,26 +4,151 @@
     <head>
         <link rel="icon" type="image/png" sizes="96x96" href="../image/autocarexlogoblack.png"> 
         <title>AutoCareX - Home</title>
-    </head>
 
-    <link rel="stylesheet" href="../css/stylevehicle.css">
+        <link rel="stylesheet" href="../css/stylevehicle.css">
+        <link rel="stylesheet" href="../css/trans.css">
+    </head>
 
     <body>
 
-        <nav class="floating-nav">
-            <div class="logo-area">
-                <img src="../image/autocarexlogowhhite.png" alt="Logo" class="nav-logo-img">
-            </div>
-  
-            <ul class="nav-links">
-                <li><a href="../html/Home.html">Home</a></li>
-                <li><a href="../html/vehicle.html" class="active">Manage Car</a></li>
-                <li><a href="../htmllocation.html">Car Workhop</a></li>
-                <li><a href="../html/upgrade.html">Suggestion</a></li>
-                <li><a href="#">Profile</a></li>
-            </ul>
-  
-            <div class="nav-cta">
-                <a href="../html/Home.html" class="btn-contact">Contact Us</a>
-            </div>
-        </nav>
+            <nav class="floating-nav">
+                <div class="logo-area">
+                    <img src="../image/autocarexlogowhhite.png" alt="Logo" class="nav-logo-img">
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="../html/Home.html">Home</a></li>
+                    <li><a href="../html/vehicle.html" class="active" >Manage Car</a></li>
+                    <li><a href="../html/location.html" >Car Workhop</a></li>
+                    <li><a href="../html/upgrade.html" >Suggestion</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+
+                <div class="nav-cta">
+                    <a href="../html/Home.html" class="btn-contact">Contact Us</a>
+                </div>
+            </nav>
+
+         <div class="text-container">
+            <span class="badge">Best Helpful Management</span>
+            <h1>Add Your Car and Manage It</h1>
+         </div>
+
+        <div class="app-container">
+
+            <aside class="sidebar">
+
+                <div class="ev-card-body">
+
+                    <div class="top-container">
+                        <h1>My Garage</h1>
+
+                        <div class="car-count-box">
+                            <span class="label">Car Number</span>
+                            <span class="number">5</span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="list-container">
+
+                        <div class="car-list">
+
+                            <div car-scroll-content>
+
+                                <div class="car-scroll-list">
+
+                                    <div class="car-item">
+                                        <div class="car-img-placeholder">AUDI S3 TOP VIEW</div>
+                                        <h4>Audi S3 2017</h4>
+                                        <p>2.0 TFSI S-tronic (310 k.c.)<br>Quattro S-Line</p>
+                                    </div>
+
+                                    <div class="car-item">
+                                        <div class="car-img-placeholder">ACURA RDX TOP VIEW</div>
+                                        <h4>Acura RDX 2020</h4>
+                                        <p>2.0i-VTEC AT (272kc) AWD</p>
+                                    </div>
+
+                                    <div class="car-item">Car 3</div>
+                                    <div class="car-item">Car 4</div>
+                                    <div class="car-item">Car 5</div>
+                                    <div class="car-item">Car 6</div>
+                                    <div class="car-item">Car 7</div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    
+                    </div>
+
+                    <div class="action">
+                        <button class="create-btn">Create More</button>
+                    </div>
+ 
+                </div>
+
+            </aside>
+
+            <main class="main-content">
+
+                <div class="top-nav">
+
+                    <div class="user-tools">
+                        <div class="notification-badge">Car Service Notification ⌵</div>
+                        <div class="icon-btn">🔔</div>
+                    </div>
+                </div>
+
+                <section class="hero-section">
+                    <div class="hero-title">
+                        <h2>Tesla Model Y</h2>
+                        <p>Fully electric Crossover</p>
+                    </div>
+
+                    <div class="car-display-container">
+                        <img src="https://www.pngplay.com/wp-content/uploads/13/Tesla-Model-Y-Transparent-Images.png" class="main-car-img" alt="Tesla">
+                        <div class="hotspot hs-1">Vibranium</div>
+                        <div class="hotspot hs-2">Carbon</div>
+                    </div>
+
+                    <div class="hero-footer">
+                        <div class="stat-box"><label>Deals</label><span>71</span></div>
+                        <div class="stat-box"><label>Rate</label><span>4.9</span></div>
+                        <div class="stat-box"><label>Seats</label><span>6</span></div>
+                    </div>
+                </section>
+
+                <section class="data-grid">
+                    <div class="data-card">
+                        <h5>EV Car Battery<span class="arrow">↗</span></h5>
+                        <div class="big-val">90%</div>
+                        <div class="chart-wave yellow-wave"></div>
+                    </div>
+                    <div class="data-card">
+                        <h5>Sales Trends <span class="arrow">↗</span></h5>
+                        <div class="big-val">+ 45,71% <small>/in a week</small></div>
+                        <div class="bar-chart">
+                            <div class="bar" style="height: 40%;"></div>
+                            <div class="bar" style="height: 60%;"></div>
+                            <div class="bar active" style="height: 95%;"></div>
+                            <div class="bar" style="height: 50%;"></div>
+                            <div class="bar" style="height: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="data-card">
+                        <h5>Completed Payment <span class="arrow">↗</span></h5>
+                        <div class="big-val">$ 65,678</div>
+                        <div class="chart-wave blue-wave"></div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </body>
+ 
+</html>
