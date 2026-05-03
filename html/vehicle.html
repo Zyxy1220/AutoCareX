@@ -38,7 +38,7 @@
 
             <aside class="sidebar">
 
-                <div class="ev-card-body">
+                <div class="ev-card-body" id="evcard">
 
                     <div class="top-container">
                         <h1>My Garage</h1>
@@ -54,31 +54,23 @@
 
                         <div class="car-list">
 
-                            <div car-scroll-content>
-
-                                <div class="car-scroll-list">
-
-                                    <div class="car-item">
-                                        <div class="car-img-placeholder">AUDI S3 TOP VIEW</div>
-                                        <h4>Audi S3 2017</h4>
-                                        <p>2.0 TFSI S-tronic (310 k.c.)<br>Quattro S-Line</p>
-                                    </div>
-
-                                    <div class="car-item">
-                                        <div class="car-img-placeholder">ACURA RDX TOP VIEW</div>
-                                        <h4>Acura RDX 2020</h4>
-                                        <p>2.0i-VTEC AT (272kc) AWD</p>
-                                    </div>
-
-                                    <div class="car-item">Car 3</div>
-                                    <div class="car-item">Car 4</div>
-                                    <div class="car-item">Car 5</div>
-                                    <div class="car-item">Car 6</div>
-                                    <div class="car-item">Car 7</div>
-
-                                </div>
-
+                            <div class="car-item">
+                                <div class="car-img-placeholder">AUDI S3 TOP VIEW</div>
+                                <h4>Audi S3 2017</h4>
+                                <p>2.0 TFSI S-tronic (310 k.c.)<br>Quattro S-Line</p>
                             </div>
+
+                            <div class="car-item">
+                                <div class="car-img-placeholder">ACURA RDX TOP VIEW</div>
+                                <h4>Acura RDX 2020</h4>
+                                <p>2.0i-VTEC AT (272kc) AWD</p>
+                            </div>
+
+                            <div class="car-item">Car 3</div>
+                            <div class="car-item">Car 4</div>
+                            <div class="car-item">Car 5</div>
+                            <div class="car-item">Car 6</div>
+                            <div class="car-item">Car 7</div>
 
                         </div>
                     
@@ -87,7 +79,47 @@
                     <div class="action">
                         <button class="create-btn">Create More</button>
                     </div>
- 
+
+                    <div class="form-mode" id="formMode">
+                        <div class="form-top">
+                            <h1>Add New Car</h1>
+                        </div>
+                            <form id="carForm">
+
+                                <div class="form-group">
+                                    <label>1. Car Nickname</label>
+                                    <input type="text" placeholder="Please Enter Car Nickname" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>2. Car Year</label>
+                                    <input type="number" min="2000" max="2026" value="2022">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>3. Car Model</label>
+
+                                    <div class="model-options">
+
+                                        <input type="radio" id="emas5" name="CarModel" hidden>
+                                        <label for="emas5" class="model-btn">Emas 5</label>
+
+                                        <input type="radio" id="emas7" name="CarModel" hidden>
+                                        <label for="emas7" class="model-btn">Emas 7</label>
+
+                                        <input type="radio" id="emasphev" name="CarModel" hidden>
+                                        <label for="emasphev" class="model-btn">Emas Phev</label>
+
+                                    </div>
+                                </div>
+                `
+                                <div class="form-actions">
+                                    <button type="button" class="cancel-btn" onclick="switchToView()">Cancel</button>
+                                    <button type="submit" class="save-btn">Save</button>
+                                </div>
+                            </form>
+                    </div>
+                
                 </div>
 
             </aside>
@@ -148,6 +180,18 @@
             </main>
 
         </div>
+
+        <script>
+            function switchToForm() {
+                document.getElementById("evcard").classList.add("form-active");
+            }
+
+            function switchToView() {
+                document.getElementById("evcard").classList.remove("form-active");
+            }
+
+            document.querySelector(".create-btn").addEventListener("click", switchToForm);
+        </script>
 
     </body>
  
