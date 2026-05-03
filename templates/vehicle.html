@@ -56,6 +56,14 @@
                     
                     <div class="list-container">
 
+                        {% if car_count == 0 %}
+                        <div class="empty-state">
+                            <img src="{{ url_for('static', filename='image/empty.png') }}">
+                            <h2>No Cars Yet</h2>
+                        </div>
+
+                        {% else %}
+
                         <div class="car-list">
 
                             {% for car in cars %}
@@ -72,6 +80,8 @@
 
 
                         </div>
+
+                        {% endif %}
                     
                     </div>
 
@@ -111,7 +121,7 @@
 
                                     </div>
                                 </div>
-                `
+                                
                                 <div class="form-actions">
                                     <button type="button" class="cancel-btn" onclick="switchToView()">Cancel</button>
                                     <button type="submit" class="save-btn">Save</button>

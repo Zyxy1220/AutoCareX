@@ -1,19 +1,34 @@
 from flask import Flask, render_template,request,redirect
+import json
+import os
 
 app = Flask(__name__)
 
-cars = [
-    {"nickname": "First Car", "model": "EMAS 5", "year": 2022},
-    {"nickname": "Second Car", "model": "EMAS 7", "year": 2026}
-]
+DATA_FILE = os.path.join("data","cars.json")
 
+#loading car#
+def load_cars():
+    try:
+        with open(DATA_FILE,"r") as f:
+            return json.load(f)
+    except:
+        return []
+    
+#make new changes#   
+def save_cars(cars):
+    with open(DATA_FILE,"w") as f:
+        json.dump(cars,f)
 
+#html link transfer#
 @app.route("/")
 def home():
     return render_template("Home.html")
 
 @app.route("/vehicle")
 def vehicle():
+
+    cars = load_cars()
+
     image_map = {
         "EMAS 5": "/static/image/emas5.jpg",
         "EMAS 7": "/static/image/emas7.jpg",
@@ -21,12 +36,15 @@ def vehicle():
     }
 
     for car in cars:
-        car["image"] = image_map[car["model"]]
+        car["image"] = image_map.get(car["model"],"")
 
     return render_template("vehicle.html", cars=cars,car_count=len(cars))
 
 @app.route("/add_car",methods=["POST"])
 def add_car():
+
+    cars = load_cars()
+
     nickname = request.form["nickname"]
     year = request.form["year"]
     model = request.form["model"]
@@ -38,6 +56,7 @@ def add_car():
     }
 
     cars.append(new_car)
+    save_cars(cars)
     
     return redirect("/vehicle")
 
