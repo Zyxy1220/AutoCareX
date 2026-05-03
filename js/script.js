@@ -1,4 +1,3 @@
-console.log("JS loaded!");
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 const nextTrigger = document.querySelector('.next-trigger');

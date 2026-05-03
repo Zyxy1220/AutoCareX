@@ -1,0 +1,680 @@
+
+.floating-nav {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%; 
+  max-width: 1400px;
+  height: 60px; 
+  background: rgba(0,0,0,0.95); /* half transparent */
+  backdrop-filter: blur(15px);          /* blur background */
+  -webkit-backdrop-filter: blur(15px);  /* Safari supoort */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* glass surounding*/
+  border-radius: 100px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  border-radius: 100px;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  padding: 0 10px 0 30px;
+  z-index: 10000;
+  pointer-events: auto;
+}
+
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.nav-logo-img {
+  height: 80px; 
+  width: auto; 
+}
+
+
+.nav-links {
+  display: flex;       
+  flex-direction: row; /* fixed in row */
+  list-style: none;
+  gap: 50px;           
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.nav-links a::after {  /* pseduo element */
+  content: "";  /* need to put a content first */
+  position: absolute; /* find the a and put down it  */
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.btn-contact {
+  width: 80px;
+  height: 15px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 5px;
+  border: 2px solid transparent;
+  background-color:#E7F63B;
+  color: black;
+  padding: 10px 11px 15px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.35s ease;
+  z-index: 1;
+}
+
+.btn-contact::before {  /* why use before as it need to below index of button and cannot affect the word*/
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 0%;
+  height: 100%;
+
+  background-color: black;
+
+  z-index: -1; /* put below the word */
+  transition: width 0.4s ease;
+}
+
+.btn-contact:hover::before { /*hover from left to right */
+  width: 100%;
+}
+
+.btn-contact:hover {
+  color: white;
+}
+
+
+:root {
+    --bg-main: #D9D9D9;
+    --sidebar-bg: #E0E0E0;
+    --card-white: #F0F2F5;
+    --accent-yellow: #E1FF00;
+    --text-dark: #1A1A1A;
+    --text-gray: #757575;
+    --shadow-soft: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
+    --shadow-inner: inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff;
+    --normal-back: #ffffff;
+}
+
+.text-container {
+  position: absolute;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  background: var(--normal-back);
+  height: 100px;
+  position: absolute;
+  top: 170px;   
+  width: 100%;
+  max-width: 1400px;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #767672;
+  color: rgb(228, 236, 106);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.text-container h1 {
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+body {
+   margin:0;
+   padding: 0;
+   box-sizing: border-box;
+   background: var(--normal-back);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.app-container {
+    margin-top: 325px;
+    width: 100%;
+    height: 800px;
+    background: var(--sidebar-bg);
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: auto 1fr;
+    padding: 25px;
+    gap: 25px;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.3);
+}
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.ev-card-body {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 360px;
+  height: 600px;
+
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.top-container {
+  padding: 0 15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-container h1 {
+  font-size: 26px;
+}
+
+.car-count-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.car-count-box .label {
+  font-size: 12px;
+  color: #888;
+}
+
+.car-count-box .number {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.list-container {
+  flex: 1;              
+  margin: 15px 0;
+  overflow: hidden;     
+}
+
+.car-list {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+
+.car-item {
+  background: var(--card-white);
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 15px;
+  max-width: 300px;
+}
+
+.car-img-placeholder {
+  background: #ddd;
+  height: 80px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 10px;
+}
+
+.car-count {
+  font-size: 18px;
+  color: #555;
+}
+
+.action {
+  text-align: center;
+}
+
+
+.create-btn {
+  width: 125px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 5px;
+  border: 3px solid transparent;
+  background-color:#E7F63B;
+  color: black;
+  padding: 10px 11px 15px 15px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.35s ease;
+  z-index: 1;
+}
+
+.create-btn::before {  /* why use before as it need to below index of button and cannot affect the word*/
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 0%;
+  height: 100%;
+
+  background-color: black;
+
+  z-index: -1; /* put below the word */
+  transition: width 0.4s ease;
+}
+
+.create-btn:hover::before { /*hover from left to right */
+  width: 100%;
+}
+
+.create-btn:hover {
+  color: white;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.user-tools {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.notification-badge {
+    background: var(--accent-yellow);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ccc;
+}
+
+.hero-section {
+    flex: 1;
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    border-radius: 30px;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-soft);
+}
+
+.car-display-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-car-img {
+    width: 75%;
+    object-fit: contain;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.2));
+}
+
+.hotspot {
+    position: absolute;
+    background: rgba(255,255,255,0.9);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+
+.hs-1 { left: 15%; top: 60%; }
+.hs-2 { right: 20%; top: 30%; }
+
+.hero-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.stat-box {
+    text-align: right;
+}
+
+.stat-box label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-gray);
+}
+
+.stat-box span {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.data-card {
+    background: var(--card-white);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.big-val {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+
+.bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 40px;
+}
+
+.bar {
+    flex: 1;
+    background: #E0E0E0;
+    border-radius: 4px;
+}
+
+.bar.active {
+    background: var(--accent-yellow);
+}
+
+.chart-wave {
+    height: 40px;
+    border-radius: 8px;
+    opacity: 0.5;
+}
+
+.yellow-wave {
+    background: repeating-linear-gradient(45deg, var(--accent-yellow) 0, var(--accent-yellow) 10px, transparent 10px, transparent 20px);
+}
+
+.blue-wave {
+    background: repeating-linear-gradient(45deg, #00C2FF 0, #00C2FF 10px, transparent 10px, transparent 20px);
+}
+
+.view-mode,
+.form-mode {
+  width: 100%;
+  height: 100%;
+}
+
+.ev-card-body > div {
+  transition: all 0.3s ease;
+}
+
+#evcard.form-active .top-container,
+#evcard.form-active .list-container,
+#evcard.form-active .action {
+  display: none;
+}
+
+#evcard.form-active .form-mode {
+  display: block;
+}
+
+.form-mode {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+  border-radius: 6px;
+  border: 3px solid rgb(126, 123, 123);
+
+}
+
+
+#evcard.form-active .form-mode {
+  display: flex; 
+}
+
+.form-top {
+ display: flex;
+ justify-content: center;
+ background-color: rgb(126, 123, 123);
+ color: white;
+
+}
+
+.form-top h1 {
+  font-size: 24px;
+}
+
+.form-mode input {
+  width: 80%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+
+  background: #f0f2f5;
+  box-shadow: inset 4px 4px 8px #d1d1d1,
+              inset -4px -4px 8px #ffffff;
+
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.form-mode input:focus {
+  box-shadow: inset 2px 2px 5px #d1d1d1,
+              inset -2px -2px 5px #ffffff,
+              0 0 0 2px #E7F63B;
+}
+
+/* placeholder */
+.form-mode input::placeholder {
+  color: #999;
+}
+
+.form-group {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap:15px;
+}
+
+.form-group label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
+}
+
+.model-options {
+  display: flex;
+  gap: 10px;
+}
+
+.model-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  background: #f0f0f0;
+  text-align: center;
+  font-weight: 600;
+
+  transition: 0.25s;
+}
+
+.model-btn:hover {
+  background: #ddd;
+}
+
+input[type="radio"]:checked + .model-btn {
+  background: #E7F63B;
+  color: black;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.form-actions {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.cancel-btn {
+  flex: 1;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #f0f0f0;
+  color: #555;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.cancel-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  width: 0%;
+  background: black;
+
+  z-index: -1;
+  transition: width 0.35s ease;
+}
+
+.cancel-btn:hover::before {
+  width: 100%;
+}
+
+.cancel-btn:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.save-btn {
+  flex: 1;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #E7F63B;
+  color: black;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(231,246,59,0.4);
+  transition: 0.3s;
+}
+
+.save-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  width: 0%;
+  background: black;
+
+  z-index: -1;
+  transition: width 0.35s ease;
+}
+
+.save-btn:hover::before {
+  width: 100%;
+}
+
+.save-btn:hover {
+  color: white;
+  transform: translateY(-2px);
+}
