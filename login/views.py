@@ -18,15 +18,9 @@ def signup_view(request):
         username = request.POST.get("username", "").strip()
         email    = request.POST.get("email", "").strip().lower()
         password = request.POST.get("password", "")
-        confirm  = request.POST.get("confirm_password", "")
 
-        # ── Validation ──────────────────────────────────────────────────────
-        if not all([username, email, password, confirm]):
+        if not all([username, email, password]):
             messages.error(request, "All fields are required.")
-            return render(request, "login/signup.html")
-
-        if password != confirm:
-            messages.error(request, "Passwords do not match.")
             return render(request, "login/signup.html")
 
         if len(password) < 8:
@@ -41,16 +35,14 @@ def signup_view(request):
             messages.error(request, "An account with that email already exists.")
             return render(request, "login/signup.html")
 
-        # ── Create user (inactive until email verified) ──────────────────
         user = User.objects.create_user(
             username=username,
             email=email,
             password=password,
         )
-        user.is_active = False  # locked until they click the verify link
+        user.is_active = False
         user.save()
 
-        # ── Send verification email ───────────────────────────────────────
         token_obj = EmailVerificationToken.create_for_user(user)
         verify_url = f"{settings.SITE_URL}/login/verify-email/{token_obj.token}/"
 
@@ -58,7 +50,7 @@ def signup_view(request):
             subject="Verify your AutoCareX account",
             message=(
                 f"Hi {username},\n\n"
-                f"Click the link below to verify your email and activate your account:\n\n"
+                f"Click the link below to verify your account:\n\n"
                 f"{verify_url}\n\n"
                 f"This link expires in 24 hours.\n\n"
                 f"— The AutoCareX Team"
@@ -68,11 +60,10 @@ def signup_view(request):
             fail_silently=False,
         )
 
-        messages.success(request, "Account created! Check your email to verify your account.")
+        messages.success(request, "Account created! Check your email to verify.")
         return redirect("login:login")
 
     return render(request, "login/signup.html")
-
 
 # ── Email Verification ─────────────────────────────────────────────────────────
 
