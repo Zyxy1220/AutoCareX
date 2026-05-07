@@ -183,14 +183,14 @@ body {
 
 
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .sidebar-title {
-    font-size: 18px;
-    margin-top: 10px;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .ev-card-body {
@@ -246,10 +246,14 @@ body {
   height: 100%;
   overflow-y: auto;
   padding-right: 5px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 
 .car-item {
+  width: 100%;
   background: var(--card-white);
   border-radius: 20px;
   padding: 15px;
@@ -399,15 +403,17 @@ body {
 }
 
 .car-display-container {
+  margin-top: 50px;
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 350px;
   display: flex;
   justify-content: center;
+  filter: drop-shadow(0 25px 35px rgba(0,0,0,0.25));
 }
 
 .main-car-img {
-  width: 75%;
+  width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 30px 40px rgba(0,0,0,0.2));
 }
@@ -421,11 +427,64 @@ body {
   font-weight: 600;
   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
   backdrop-filter: blur(5px);
+  cursor: pointer;
 }
 
 .hs-1 { left: 15%; top: 60%; }
 .hs-2 { right: 20%; top: 30%; }
 
+.progress-card {
+  position: absolute;
+  left:45%;
+  transform: translateX(-50%) scale(0.9);
+  width: 260px;
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  bottom: -50px
+}
+
+#tyreToggle:checked ~ .progress-card {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: all;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-top img {
+  border-radius: 10px;
+  width: 200px;
+}
+
+.status-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(#4caf50 90%, #eee 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
 .hero-footer {
   display: flex;
   justify-content: flex-end;

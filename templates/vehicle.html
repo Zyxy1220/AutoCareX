@@ -145,14 +145,33 @@
 
                 <section class="hero-section">
                     <div class="hero-title">
-                        <h2>Tesla Model Y</h2>
-                        <p>Fully electric Crossover</p>
+                        <h2>1st CAR ( 2023 )</h2>
+                        <p>Proton EMAS 5</p>
                     </div>
 
                     <div class="car-display-container">
-                        <img src="https://www.pngplay.com/wp-content/uploads/13/Tesla-Model-Y-Transparent-Images.png" class="main-car-img" alt="Tesla">
-                        <div class="hotspot hs-1">Vibranium</div>
-                        <div class="hotspot hs-2">Carbon</div>
+
+                        <input type="checkbox" id="tyreToggle" hidden>
+
+                        <img  class="main-car-img" src="{{ url_for('static', filename='image/emas5transparent.png') }}">
+                        
+                        <label for="tyreToggle" class="hotspot hs-1">Tyre</label>
+                        <div class="hotspot hs-2">Engine</div>
+
+                        <div class="progress-card">
+
+                            <label for="tyreToggle" class="close-btn">✕</label>
+
+                            <div class="progress-top">
+                                <img src="{{ url_for('static', filename='image/tyreemas5.png') }}">
+                                <div class="status-circle">90%</div>
+                            </div>
+
+                            <h3>Tyre</h3>
+                            <p>Tyre 90% 目前良好，还不需要更换</p>
+
+                        </div>
+                        
                     </div>
 
                     <div class="hero-footer">
