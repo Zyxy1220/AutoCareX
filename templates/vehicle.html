@@ -34,8 +34,8 @@
             </nav>
 
          <div class="text-container">
-            <span class="badge">Best Helpful Management</span>
-            <h1>Add Your Car and Manage It</h1>
+            <span class="badge">Smart Vehicle Management</span>
+            <h1>Add and Monitor Your Vehicles</h1>
          </div>
 
         <div class="app-container">
@@ -151,12 +151,19 @@
 
                     <div class="car-display-container">
 
+                        <input type="checkbox" id="engineToggle" hidden>
+
                         <input type="checkbox" id="tyreToggle" hidden>
 
-                        <img  class="main-car-img" src="{{ url_for('static', filename='image/emas5transparent.png') }}">
+                        <img  class="main-car-img emas5-car" src="{{ url_for('static', filename='image/emas5transparent.png') }}">
                         
-                        <label for="tyreToggle" class="hotspot hs-1">Tyre</label>
-                        <div class="hotspot hs-2">Engine</div>
+                        <img class="main-car-img engine-car" src="{{ url_for('static', filename='image/emas5engine1.png') }}">
+
+                        <label for="engineToggle" class="engine-close">✕</label>
+                        
+                        <label for="tyreToggle" class="hotspot-dot hs-1"></label>
+                        
+                        <label for="engineToggle" class="hotspot-dot hs-2"></label>
 
                         <div class="progress-card">
 
@@ -164,47 +171,128 @@
 
                             <div class="progress-top">
                                 <img src="{{ url_for('static', filename='image/tyreemas5.png') }}">
-                                <div class="status-circle">90%</div>
+                                <div class="status-circle">
+                                    <span>90%</span>
+                                </div>
                             </div>
 
-                            <h3>Tyre</h3>
-                            <p>Tyre 90% 目前良好，还不需要更换</p>
+                            <p>Tyre is currently in good condition (90%) and does not require replacement.</p>
 
                         </div>
+
+
+                        <input type="checkbox" id="eh1Toggle" hidden>
+
+                        <label for="eh1Toggle" class="engine-hotspot eh-1"></label>
+
+                        <div class="engine-card card-1">
+
+                            <label for="eh1Toggle" class="close-btn">✕</label>
+
+                            <div class="progress-top">
+                                <img src="{{ url_for('static', filename='image/engine1.png') }}">
+                                <div class="status-circle">
+                                    <span>90%</span>
+                                </div>
+                            </div>
+
+                            <p>Engine system is running normally.</p>
+                        </div>
+
+                        <input type="checkbox" id="eh2Toggle" hidden>
+
+
+                        <label for="eh2Toggle" class="engine-hotspot eh-2"></label>
+
+                        <div class="engine-card card-2">
+
+                            <label for="eh2Toggle" class="close-btn">✕</label>
+
+                            <div class="progress-top">
+                                <img src="{{ url_for('static', filename='image/battery.png') }}">
+                                <div class="status-circle">
+                                    <span>10%</span>
+                                </div>
+                            </div>
+
+                            <p>Battery health is 88%.</p>
+                        </div>
+
+
+                        <input type="checkbox" id="eh3Toggle" hidden>
+
+                        <label for="eh3Toggle" class="engine-hotspot eh-3"></label>
+
+                        <div class="engine-card card-3">
+
+                            <label for="eh3Toggle" class="close-btn">✕</label>
+
+                            <div class="progress-top">
+                                <img src="{{ url_for('static', filename='image/cooling.png') }}">
+                                <div class="status-circle">
+                                    <span>80%</span>
+                                </div>
+                            </div>
+
+                            <p>Cooling system temperature is stable.</p>
+                        </div>
+
                         
                     </div>
 
-                    <div class="hero-footer">
-                        <div class="stat-box"><label>Deals</label><span>71</span></div>
-                        <div class="stat-box"><label>Rate</label><span>4.9</span></div>
-                        <div class="stat-box"><label>Seats</label><span>6</span></div>
-                    </div>
                 </section>
 
                 <section class="data-grid">
-                    <div class="data-card">
-                        <h5>EV Car Battery<span class="arrow">↗</span></h5>
-                        <div class="big-val">90%</div>
-                        <div class="chart-wave yellow-wave"></div>
-                    </div>
-                    <div class="data-card">
-                        <h5>Sales Trends <span class="arrow">↗</span></h5>
-                        <div class="big-val">+ 45,71% <small>/in a week</small></div>
-                        <div class="bar-chart">
-                            <div class="bar" style="height: 40%;"></div>
-                            <div class="bar" style="height: 60%;"></div>
-                            <div class="bar active" style="height: 95%;"></div>
-                            <div class="bar" style="height: 50%;"></div>
-                            <div class="bar" style="height: 75%;"></div>
-                        </div>
-                    </div>
-                    <div class="data-card">
-                        <h5>Completed Payment <span class="arrow">↗</span></h5>
-                        <div class="big-val">$ 65,678</div>
-                        <div class="chart-wave blue-wave"></div>
-                    </div>
-                </section>
 
+                <!-- CARD 1: BATTERY -->
+                <div class="data-card battery-card">
+
+                    <h5>EV Battery Status</h5>
+
+                    <div class="battery-value">90<span>%</span></div>
+
+                    <div class="battery-bar">
+                    <div class="fill"></div>
+                    <div class="battery-tip"></div>
+                    </div>
+
+                    <div class="battery-label">
+                    Optimal performance range
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 2: MAINTENANCE -->
+                <div class="data-card maintenance-card">
+
+                    <h5>Maintenance Distance</h5>
+
+                    <div class="main-value">800 <span>km</span></div>
+
+                    <div class="sub-text">
+                    Avg cycle: 1000 km
+                    </div>
+
+                    <div class="ratio-line">
+
+                    <div class="progress"></div>
+
+                    <div class="marker current">
+                        <div class="num">800</div>
+                        <div class="tag">Current</div>
+                    </div>
+
+                    <div class="marker target">
+                        <div class="num">1000</div>
+                        <div class="tag">Target</div>
+                    </div>
+
+                    </div>
+
+                </div>
+
+                </section>
             </main>
 
         </div>
