@@ -128,8 +128,101 @@
                                 </div>
                             </form>
                     </div>
-                
+
+        <div class="status-container">
+
+            <!-- HEADER -->
+            <div class="status-header">
+                <h1>Daily Car Status</h1>
+            </div>
+
+            <!-- FORM -->
+            <div id="formSection">
+
+                <!-- DATE -->
+                <div class="status-form-group">
+                <label>Select Date</label>
+                <input type="date" id="date" class="status-input-box">
                 </div>
+
+                <!-- KM -->
+                <div class="status-form-group">
+                <label>Today's Mileage (KM)</label>
+
+                <input type="number"
+                        id="km"
+                        class="status-input-box"
+                        placeholder="Enter KM">
+                </div>
+
+                <!-- BATTERY -->
+                <div class="status-form-group">
+
+                <label>Battery Remaining</label>
+
+                <div class="slider-container">
+
+                    <div class="battery-value">
+                    <span id="batteryText">50</span>%
+                    </div>
+
+                    <input type="range"
+                        min="0"
+                        max="100"
+                        value="50"
+                        id="batterySlider">
+
+                </div>
+
+            </div>
+
+            </div>
+
+            <!-- STATUS -->
+            <div id="statusSection" style="display:none;">
+
+                <div class="status-title">
+                Current Status
+                </div>
+
+                <div class="status-cards">
+
+                <div class="card">
+                    <div class="card-value" id="showKM">
+                    0 KM
+                    </div>
+
+                    <div class="card-label">
+                    Today's Drive
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-value" id="showBattery">
+                    0%
+                    </div>
+
+                    <div class="card-label">
+                    Battery Left
+                    </div>
+                </div>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <div class="button-group">
+
+                <button class="main-btn" id="saveBtn">
+                Save
+                </button>
+
+            </div>
+
+            </div>
+            
+            </div>
 
             </aside>
 
@@ -307,6 +400,73 @@
             }
 
             document.querySelector(".create-btn").addEventListener("click", switchToForm);
+
+            /* =========================
+            DAILY STATUS
+            ========================= */
+
+            const batterySlider = document.getElementById("batterySlider");
+            const batteryText = document.getElementById("batteryText");
+
+            const saveBtn = document.getElementById("saveBtn");
+
+            const kmInput = document.getElementById("km");
+
+            const showKM = document.getElementById("showKM");
+            const showBattery = document.getElementById("showBattery");
+
+            const formSection = document.getElementById("formSection");
+            const statusSection = document.getElementById("statusSection");
+
+            let isEditing = true;
+
+            /* SLIDER */
+
+            batterySlider.addEventListener("input", () => {
+            batteryText.innerText = batterySlider.value;
+            });
+
+            /* SAVE / UPDATE */
+
+            saveBtn.addEventListener("click", () => {
+
+            if(isEditing){
+
+                const km = kmInput.value;
+                const battery = batterySlider.value;
+
+                if(km === ""){
+                alert("Please enter mileage KM");
+                return;
+                }
+
+                /* UPDATE STATUS */
+
+                showKM.innerText = km + " KM";
+                showBattery.innerText = battery + "%";
+
+                /* TOGGLE */
+
+                formSection.style.display = "none";
+                statusSection.style.display = "block";
+
+                saveBtn.innerText = "Update";
+
+                isEditing = false;
+            }
+
+            else{
+
+                formSection.style.display = "block";
+
+                statusSection.style.display = "none";
+
+                saveBtn.innerText = "Save";
+
+                isEditing = true;
+            }
+
+            });
         </script>
 
     </body>
