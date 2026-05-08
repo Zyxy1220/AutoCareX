@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login | AutoCareX{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+
+<div class="login_container">
+  <div class="login_left">
+    <img src="{% static 'image/signup_image.png' %}" class="login_img">
+  </div>
+
+  <div class="login_right">
+    <div class="profile_content">
+      <img src="{% static 'image/autocarexlogowhhite.png' %}" class="logo"><br>
+      <h1>Login to your account</h1>
+      <p>Don't have an AutoCareX ID? Create an account <a href="{% url 'login:signup' %}">here.</a></p>
+
+      {% if messages %}
+        {% for message in messages %}
+          <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post">
+        {% csrf_token %}
+        <label for="identifier">Account Name or Email*</label><br>
+        <input type="text" id="identifier" name="identifier" placeholder="Enter your account name"><br>
+
+        <label for="pw">Password*</label><br>
+        <input type="password" id="pw" name="password" placeholder="password"><br>
+
+        <button type="submit">
+          <span>GOGOGO</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
