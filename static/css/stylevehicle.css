@@ -622,7 +622,7 @@ body {
   transform: rotateY(0deg) translateX(0);
 }
 
-#engineToggle:checked ~ .emas5-car {
+#engineToggle:checked ~ #mainCarImage {
   opacity: 0;
   transform: rotateY(60deg) translateX(60px);
 }
@@ -652,6 +652,8 @@ body {
     0 0 25px rgba(215,255,63,0.35);
 
   cursor: pointer;
+
+  z-index:100;
 }
 
 .hotspot-dot::after {
@@ -665,15 +667,42 @@ body {
   animation: pulse 2s infinite;
 }
 
-.hs-1 { left: 16%; top: 62%; }
-.hs-2 { right: 17%; top: 40%; }
-
-.hs-1::before{
-  content:"Tyre";
+.model-EMAS5 .openengine-hotspot {
+  left: 80%;
+  top: 40%;
 }
 
-.hs-2::before{
+.model-EMAS5 .tyre-hotspot {
+  left: 16%;
+  top: 62%;
+}
+
+.model-EMAS7 .openengine-hotspot {
+  left: 80%;
+  top: 40%;
+}
+
+.model-EMAS7 .tyre-hotspot {
+  left: 18%;
+  top: 65%;
+}
+
+.model-PHEV .openengine-hotspot {
+  left: 80%;
+  top: 40%;
+}
+
+.model-PHEV .tyre-hotspot {
+  left: 20%;
+  top: 63%;
+}
+
+.openengine-hotspot::before{
   content:"Engine";
+}
+
+.tyre-hotspot::before{
+  content:"Tyre";
 }
 
 .hotspot-dot::before{
@@ -1035,30 +1064,22 @@ body {
 
 .eh-1 {
   top: 45%;
-  left: 34%;
-}
-
-.eh-3 {
-  top: 48%;
-  left: 63%;
+  left: 30%;
 }
 
 .eh-2 {
-  top: 48%;
-  left: 47%;
+  top: 40%;
+  left: 62%;
 }
 
 .eh-1::before{
-  content:"Battery";
+  content:"Coolant";
 }
 
 .eh-2::before{
-  content:"Cooling";
+  content:"Brake Fluid";
 }
 
-.eh-3::before{
-  content:"Motor";
-}
 
 .engine-hotspot::before{
   position:absolute;
@@ -1149,8 +1170,8 @@ body {
   opacity: 1;
 
   transform:
-    translateX(-50%)
-    translateY(0)
+    translateX(-80%)
+    translateY(60%)
     scale(1);
 
   pointer-events: all;
@@ -1161,39 +1182,13 @@ body {
   opacity: 1;
 
   transform:
-    translateX(-50%)
-    translateY(0)
+    translateX(0%)
+    translateY(-80%)
     scale(1);
 
   pointer-events: all;
 }
 
-/* EH3 */
-#eh3Toggle:checked ~ .card-3 {
-  opacity: 1;
-
-  transform:
-    translateX(-50%)
-    translateY(0)
-    scale(1);
-
-  pointer-events: all;
-}
-
-.engine-card.card-1 {
-  top: 40%;
-  left: 15%;
-}
-
-.engine-card.card-2 {
-  top: 0%;
-  left: 50%;
-}
-
-.engine-card.card-3 {
-  top: 40%;
-  left: 85%;
-}
 
 /* =========================
    CENTER DASHBOARD STATS
