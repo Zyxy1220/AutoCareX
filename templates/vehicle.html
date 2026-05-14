@@ -90,7 +90,7 @@
 
                             {% for car in cars %}
 
-                            <label class="car-item" for="car{{loop.index}}">
+                            <label class="car-item" for="car{{loop.index}}" data-model="{{car.model}}" data-name="{{car.nickname}}" data-year="{{car.year}}">
 
                                 <input 
                                 type="radio" 
@@ -234,29 +234,58 @@
                     <section class="hero-section">
 
                         <div class="hero-title">
-                            <h2>1st CAR ( 2023 )</h2>
-                            <p>Proton EMAS 5</p>
+                            <h2 id="carTitle">
+                                {{ first_car.nickname }} ({{ first_car.year }})
+                            </h2>
+
+                            <p id="carModel">
+                                {{ first_car.model }}
+                            </p>
                         </div>
 
-                        <div class="car-display-container">
+                        <div class="car-display-container" id="carContainer">
 
                             <input type="checkbox" id="engineToggle" hidden>
 
                             <input type="checkbox" id="tyreToggle" hidden>
 
                             <img  
-                            class="main-car-img emas5-car" 
-                            src="{{ url_for('static', filename='image/emas5transparent.png') }}">
+                            id="mainCarImage"
+                            class="main-car-img "
+
+                            src="
+                            {% if first_car.model == 'EMAS 5' %}
+                            {{ url_for('static', filename='image/emas5transparent.png') }}
+
+                            {% elif first_car.model == 'EMAS 7' %}
+                            {{ url_for('static', filename='image/emas7transparent.png') }}
+
+                            {% else %}
+                            {{ url_for('static', filename='image/emasphevtransparent.png') }}
+                            {% endif %}
+                            ">
                             
                             <img 
-                            class="main-car-img engine-car" 
-                            src="{{ url_for('static', filename='image/emas5engine1.png') }}">
+                            id="engineImage"
+                            class="main-car-img engine-car"
+
+                            src="
+                            {% if first_car.model == 'EMAS 5' %}
+                            {{ url_for('static', filename='image/emas5engine1.png') }}
+
+                            {% elif first_car.model == 'EMAS 7' %}
+                            {{ url_for('static', filename='image/emas7engine1.png') }}
+
+                            {% else %}
+                            {{ url_for('static', filename='image/emasphevengine1.png') }}
+                            {% endif %}
+                            ">
 
                             <label for="engineToggle" class="engine-close">✕</label>
 
-                            <label for="tyreToggle" class="hotspot-dot hs-1"></label>
+                            <label for="tyreToggle" class="hotspot-dot tyre-hotspot"></label>
 
-                            <label for="engineToggle" class="hotspot-dot hs-2"></label>
+                            <label for="engineToggle" class="hotspot-dot openengine-hotspot"></label>
 
                             <!-- TYRE CARD -->
 
@@ -266,7 +295,7 @@
 
                                 <div class="progress-top">
 
-                                    <img src="{{ url_for('static', filename='image/tyreemas5.png') }}">
+                                    <img src="{{ url_for('static', filename='image/tyreemas51.png') }}">
 
                                     <div class="status-circle">
                                         <span>90%</span>
@@ -293,7 +322,7 @@
 
                                 <div class="progress-top">
 
-                                    <img src="{{ url_for('static', filename='image/engine1.png') }}">
+                                    <img src="{{ url_for('static', filename='image/coolant.png') }}">
 
                                     <div class="status-circle">
                                         <span>90%</span>
@@ -301,7 +330,7 @@
 
                                 </div>
 
-                                <p>Engine system is running normally.</p>
+                                <p>The coolant fluid level is at 90%</p>
 
                             </div>
 
@@ -317,7 +346,7 @@
 
                                 <div class="progress-top">
 
-                                    <img src="{{ url_for('static', filename='image/battery.png') }}">
+                                    <img src="{{ url_for('static', filename='image/brakefluid.png') }}">
 
                                     <div class="status-circle">
                                         <span>88%</span>
@@ -325,33 +354,12 @@
 
                                 </div>
 
-                                <p>Battery health is 88%.</p>
+                                <p>The brake fluid is in good condition 88%.</p>
 
                             </div>
 
                             <!-- CARD 3 -->
 
-                            <input type="checkbox" id="eh3Toggle" hidden>
-
-                            <label for="eh3Toggle" class="engine-hotspot eh-3"></label>
-
-                            <div class="engine-card card-3">
-
-                                <label for="eh3Toggle" class="close-btn">✕</label>
-
-                                <div class="progress-top">
-
-                                    <img src="{{ url_for('static', filename='image/cooling.png') }}">
-
-                                    <div class="status-circle">
-                                        <span>80%</span>
-                                    </div>
-
-                                </div>
-
-                                <p>Cooling system temperature is stable.</p>
-
-                            </div>
 
                         </div>
 
@@ -424,20 +432,8 @@
 
                                 <div class="car-dot-wrapper">
 
-                                    <div class="car-dot
-                                        {% if car.model == 'EMAS 5' %}dot-5
-                                        {% elif car.model == 'EMAS 7' %}dot-7
-                                        {% else %}dot-phev{% endif %}">
+                                    <div id="rightDot" class="car-dot"></div>
 
-                                        {% if car.model == "EMAS 5" %}
-                                            e5
-                                        {% elif car.model == "EMAS 7" %}
-                                            e7
-                                        {% else %}
-                                            PH
-                                        {% endif %}
-
-                                    </div>
 
                                 </div>
 
@@ -659,6 +655,9 @@
 
 
         <script>
+
+            let currentCar = null;
+            
             function switchToForm() {
                 document.getElementById("evcard").classList.add("form-active");
             }
@@ -680,6 +679,150 @@
                 document.getElementById(inputID).value = value;  // update input
                 document.getElementById(listID).style.display = "none"; // close list
             }
+
+            let currentModel = "EMAS 5";
+
+            // ======================
+            // change car image
+            // ======================
+            const carItems = document.querySelectorAll(".car-item");
+
+            carItems.forEach(item => {
+                item.addEventListener("click", () => {
+
+                    const model = item.dataset.model;
+                    const name = item.dataset.name;
+                    const year = item.dataset.year;
+
+                    const mainImage = document.getElementById("mainCarImage");
+                    const engineImage = document.getElementById("engineImage");
+
+                    // itle
+                    document.getElementById("carTitle").innerText = `${name} (${year})`;
+                    document.getElementById("carModel").innerText = model;
+
+                    // ======================
+                    // image and status
+                    // ======================
+                    if (model === "EMAS 5") {
+                        currentModel = "EMAS 5";
+
+                        mainImage.src = "/static/image/emas5transparent.png";
+                        engineImage.src = "/static/image/emas5engine1.png";
+                    }
+                    else if (model === "EMAS 7") {
+                        currentModel = "EMAS 7";
+
+                        mainImage.src = "/static/image/emas7transparent.png";
+                        engineImage.src = "/static/image/emas7engine1.png";
+                    }
+                    else {
+                        currentModel = "PHEV";
+
+                        mainImage.src = "/static/image/emasphevtransparent.png";
+                        engineImage.src = "/static/image/emasphevengine1.png";
+                    }
+
+                    
+                    updateCarLayout();
+                });
+            });
+
+
+            // ======================
+            // 3. hotspot layout 
+            // ======================
+            function updateCarLayout() {
+
+                const container = document.getElementById("carContainer");
+
+                // remove old
+                container.classList.remove(
+                    "model-EMAS5",
+                    "model-EMAS7",
+                    "model-PHEV"
+                );
+
+                // add new class
+                if (currentModel === "EMAS 5") {
+                    container.classList.add("model-EMAS5");
+                }
+                else if (currentModel === "EMAS 7") {
+                    container.classList.add("model-EMAS7");
+                }
+                else {
+                    container.classList.add("model-PHEV");
+                }
+            }
+
+            // right dot update
+            function updateRightPanel(){
+
+                if(!currentCar) return;
+
+                const rightDot = document.getElementById("rightDot");
+
+                // reset
+                rightDot.classList.remove("dot-5","dot-7","dot-phev");
+
+                // dot + text
+                if (currentCar.model === "EMAS 5") {
+                    rightDot.classList.add("dot-5");
+                    rightDot.innerText = "e5";
+                }
+                else if (currentCar.model === "EMAS 7") {
+                    rightDot.classList.add("dot-7");
+                    rightDot.innerText = "e7";
+                }
+                else {
+                    rightDot.classList.add("dot-phev");
+                    rightDot.innerText = "PH";
+                }
+
+                document.querySelector(".car-profile-box h4").innerText = currentCar.name;
+                document.querySelector(".car-profile-box p").innerText =
+                    `${currentCar.year} • ${currentCar.model}`;
+            }
+
+            carItems.forEach(item => {  // like a main to control all the things when u click the car item
+                item.addEventListener("click", () => {
+
+                    const model = item.dataset.model;
+                    const name = item.dataset.name;
+                    const year = item.dataset.year;
+
+                    currentCar = { model, name, year };
+
+                    document.getElementById("carTitle").innerText = `${name} (${year})`;
+                    document.getElementById("carModel").innerText = model;
+
+                    updateCarLayout();
+                    updateRightPanel();
+                });
+            });
+
+
+            // init
+            window.onload = function () {  // auto select the first car
+                const first = document.querySelector(".car-item");
+
+                if (first) {
+                    first.querySelector("input").checked = true;
+                    first.click();
+                }
+            };
+
+            //window.onload
+            //    ↓
+            //first.click()
+            //    ↓
+            //car click handler
+            //    ↓
+            //currentCar = first car
+            //    ↓
+            //updateCarLayout()
+            //updateRightPanel()
+            //update title + image
 
         </script>
 
