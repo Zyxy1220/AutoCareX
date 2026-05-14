@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'login',  
     'ev_calculation',
     'ev_data',
+    'dashboard',
 ]
 
 MIDDLEWARE = [

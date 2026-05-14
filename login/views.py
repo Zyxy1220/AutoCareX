@@ -12,7 +12,7 @@ from .models import EmailVerificationToken
 
 def signup_view(request):
     if request.user.is_authenticated:
-        return redirect("/admin/")
+        return redirect("dashboard:index")
 
     if request.method == "POST":
         username = request.POST.get("username", "").strip()
@@ -88,7 +88,7 @@ def verify_email_view(request, token):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("/admin/")
+        return redirect("dashboard:index")
 
     if request.method == "POST":
         identifier = request.POST.get("identifier", "").strip()  # username or email
@@ -126,9 +126,12 @@ def login_view(request):
     return render(request, "login/login.html")
 
 
+
+
 # ── Logout ─────────────────────────────────────────────────────────────────────
 
 def logout_view(request):
     auth_logout(request)
     messages.success(request, "You have been logged out.")
-    return redirect("login:login")
+    return redirect("dashboard:index")
+
