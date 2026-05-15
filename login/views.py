@@ -121,11 +121,10 @@ def login_view(request):
             return render(request, "login/login.html")
 
         auth_login(request, user)
-        return redirect("dashboard:index")
+        next_url = request.POST.get("next") or request.GET.get("next") or "dashboard:index"
+        return redirect(next_url)
 
     return render(request, "login/login.html")
-
-
 
 
 # ── Logout ─────────────────────────────────────────────────────────────────────
@@ -134,4 +133,3 @@ def logout_view(request):
     auth_logout(request)
     messages.success(request, "You have been logged out.")
     return redirect("dashboard:index")
-
