@@ -1,12 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
-        <link rel="icon" type="image/png" sizes="96x96" href="../image/autocarexlogoblack.png"> 
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'image/autocarexlogoblack.png' %}"> 
         <title>AutoCareX - Suggestion</title>
 
-        <link rel="stylesheet" href="../css/styleHome.css">
-        <link rel="stylesheet" href="../css/trans.css">
+        <link rel="stylesheet" href="{% static 'css/styleHome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/trans.css' %}">
 
     </head>
 
@@ -18,25 +19,25 @@
 
             <nav class="floating-nav">
                 <div class="logo-area">
-                    <img src="../image/autocarexlogowhhite.png" alt="Logo" class="nav-logo-img">
+                    <img src="{% static 'image/autocarexlogowhhite.png' %}" alt="Logo" class="nav-logo-img">
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href="../html/Home.html">Home</a></li>
-                    <li><a href="../html/vehicle.html" >Manage Car</a></li>
-                    <li><a href="../html/location.html" >Car Workhop</a></li>
-                    <li><a href="../html/upgrade.html" class="active">Suggestion</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="{% url 'dashboard:index' %}">Home</a></li>
+                    <li><a href="{% url 'dashboard:vehicle' %}" >Manage Car</a></li>
+                    <li><a href="{% url 'dashboard:location' %}" >Car Workhop</a></li>
+                    <li><a href="{% url 'dashboard:upgrade' %}" class="active">Suggestion</a></li>
+                    <a href="{% url 'dashboard:profile' %}">Profile</a>
                 </ul>
 
                 <div class="nav-cta">
-                    <a href="../html/Home.html" class="btn-contact">Contact Us</a>
+                    <a href="{% url 'dashboard:index' %}" class="btn-contact">Contact Us</a>
                 </div>
             </nav>
 
                 <nav class="first-container">
 
-                    <div class = "slide active" style="background-image: url(../image/protonemas1.jpg);">
+                    <div class = "slide active" style="background-image: url({% static 'image/protonemas1.jpg' %})">
                         
                         <div class="slide-content">
                             <h1>Start Your Journey<br>With Emas Today</h1>
@@ -45,7 +46,7 @@
 
                     </div>
 
-                    <div class="slide" style="background-image: url(../image/home_emas1.jpg);">
+                    <div class="slide" style="background-image: url({% static 'image/home_emas1.jpg' %})">
 
                         <div class="slide-content">
                             <h1>Latest Model EV<br>Wait You</h1>
@@ -109,7 +110,7 @@
                 </div>
 
                 <div class="image-wrapper">
-                    <img src="../image/aboutus.png" alt="Silver Sports Car">
+                    <img src="{% static 'image/aboutus.png' %}" alt="Silver Sports Car">
                 </div>
 
                 <div class="third-container">
@@ -122,7 +123,7 @@
                     <div class="news-grid">
                         <nav class="news-card">
                             <div class="card-image">
-                                <img src="../image/news1.jpg">
+                                <img src="{% static 'image/news1.jpg' %}">
                             </div>
                             <div class="card-content">
                                 <h3>Proton eMas 7 PHEV Surges in First Month</h3>
@@ -135,7 +136,7 @@
 
                         <nav class="news-card">
                             <div class="card-image">
-                                <img src="../image/news2.jpg">
+                                <img src="{% static 'image/news2.jpg' %}">
                             </div>
                             <div class="card-content">
                                 <h3>Proton eMas 7 Gets Cheaper Variant for Singapore</h3>
@@ -148,7 +149,7 @@
 
                         <nav class="news-card">
                             <div class="card-image">
-                                <img src="../image/new3.jpg">
+                                <img src="{% static 'image/new3.jpg' %}">
                             </div>
                             <div class="card-content">
                                 <h3>Proton eMas 7 Adds Android Auto via OTA</h3>
@@ -161,7 +162,7 @@
 
                         <nav class="news-card">
                             <div class="card-image">
-                                <img src="../image/news4.avif">
+                                <img src="{% static 'image/news4.avif' %}">
                             </div>
                             <div class="card-content">
                                 <h3>Proton eMas 5 Tested in Real-World Drive</h3>
@@ -180,15 +181,15 @@
                         <div class="footer-top">
 
                             <div class="logo">
-                            <img src="../image/autocarexlogowhhite.png"> 
+                            <img src="{% static 'image/autocarexlogowhhite.png' %}"> 
                             </div>
 
                             <nav class="footer-nav">
-                            <a href="../html/Home.html">Home</a>
-                            <a href="../html/vehicle.html">Own Vehicle</a>
-                            <a href="../html/location.html">Car Workshop</a>
-                            <a href="../html/upgrade.html">Upgrade</a>
-                            <a href="#">Profile</a>
+                            <a href="{% url 'dashboard:index' %}">Home</a>
+                            <a href="{% url 'dashboard:vehicle' %}">Own Vehicle</a>
+                            <a href="{% url 'dashboard:location' %}">Car Workshop</a>
+                            <a href="{% url 'dashboard:upgrade' %}">Upgrade</a>
+                            <a href="{% url 'dashboard:profile' %}">Profile</a>
                             </nav>
 
                         </div>
@@ -216,7 +217,7 @@
                 </footer>
         </div>
 
-        <script src="../js/script.js"></script>
+        <script src="{% static 'js/script.js' %}"></script>
 
     </body>
  
